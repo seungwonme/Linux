@@ -84,6 +84,8 @@
 - [Shell Script](#shell-script)
 	- [curl](#curl)
 - [Cron](#cron)
+	- [Syntax](#syntax)
+	- [Error Resolution](#error-resolution)
   
 
 # Command Structure
@@ -830,3 +832,40 @@ curl -X POST -d "name=seunan" [URL] # POST request
 ```
 
 # Cron
+
+- `crontab` command is used to schedule commands to be executed periodically
+- `tar`을 이용하여 백업을 하거나, `rsync`를 이용하여 파일을 동기화하거나, `find`를 이용하여 파일을 삭제하는 등의 작업을 자동화할 수 있다.
+
+```bash
+crontab -l # list crontab
+crontab -e # edit crontab
+crontab -r # remove crontab
+```
+
+## Syntax
+
+```bash
+a b c d e command
+```
+
+| a | minute (0 - 59) |
+| b | hour (0 - 23) |
+| c | day of month (1 - 31) |
+| d | month (1 - 12) |
+| e | day of week (0 - 6) |
+| command | command to execute |
+
+- `*` : any
+- `*/n` : every n
+- `5,6` : 5 or 6
+- `1-4` : 1 to 4
+- [crontab.guru](https://crontab.guru/)
+
+## Error Resolution
+
+2>&1 : stderr to stdout
+log에서 stderr를 볼 수 있게 하여 에러를 확인할 수 있다.
+
+```bash
+a b c d e command >> /tmp/cron.log < 2>&1 >
+```
