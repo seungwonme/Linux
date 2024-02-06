@@ -146,11 +146,12 @@
 ```
 
 - `q` : quit
-- `space(or f)` : next page
-- `b` : previous page
 - `h` : help
+- `space(or f)` : forward page
+- `b` : back page
 - `/` : search
 - `n` : next search
+- `N` : previous search
 
 ```bash
 > man echo
